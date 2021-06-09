@@ -20,6 +20,12 @@
         android:layout_height="wrap_content"
         android:text="@string/create_and_copy_person" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/cycle_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cycle_test" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

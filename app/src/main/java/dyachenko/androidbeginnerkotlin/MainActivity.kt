@@ -26,6 +26,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             val nikita = sergey.copy(name = "Nikita")
             outInfo(nikita.toString())
         }
+
+        binding.cycleButton.setOnClickListener(this)
     }
 
     private fun outInfo(text: String, clear: Boolean = false) {
@@ -36,9 +38,45 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.click_me_button -> pressButton()
+            R.id.cycle_button -> cycleTest()
+        }
+    }
+
+    private fun pressButton() {
         Counters.countButtonPressed++
         val clear = Counters.countButtonPressed == Constants.CONSOLE_CLEAR_LIMIT
         if (clear) Counters.countButtonPressed = 0
         outInfo("${Counters.countButtonPressed}: I was pressed softly", clear)
+    }
+
+    private fun cycleTest() {
+        val fruits = arrayOf("apple", "mango", "orange", "lime", "cherry")
+
+        outInfo("fruits.forEach")
+        fruits.forEach {
+            outInfo("  $it")
+        }
+
+        outInfo("for (i in 0 until fruits.size)")
+        for (i in 0 until fruits.size) {
+            outInfo("  $i - ${fruits[i]}")
+        }
+
+        outInfo("for (i in fruits.indices step 2)")
+        for (i in fruits.indices step 2) {
+            outInfo("  $i - ${fruits[i]}")
+        }
+
+        outInfo("for (i in 3..7)")
+        for (i in 3..7) {
+            outInfo("  $i")
+        }
+
+        outInfo("for (i in 10 downTo 6)")
+        for (i in 10 downTo 6) {
+            outInfo("  $i")
+        }
     }
 }
