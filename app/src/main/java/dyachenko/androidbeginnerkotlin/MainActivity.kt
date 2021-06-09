@@ -19,6 +19,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun initViews() {
         binding.clickMeButton.setOnClickListener(this)
+
+        binding.personButton.setOnClickListener {
+            val sergey = Person("Sergey", 34)
+            outInfo(sergey.toString())
+            val nikita = sergey.copy(name = "Nikita")
+            outInfo(nikita.toString())
+        }
     }
 
     private fun outInfo(text: String, clear: Boolean = false) {
