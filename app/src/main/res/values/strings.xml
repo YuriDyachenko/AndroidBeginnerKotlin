@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Android Beginner Kotlin</string>
+    <string name="console_title">console:</string>
+    <string name="click_me_softly">press me softly</string>
 </resources>
