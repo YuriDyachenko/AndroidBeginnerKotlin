@@ -21,10 +21,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.clickMeButton.setOnClickListener(this)
 
         binding.personButton.setOnClickListener {
-            val sergey = Person("Sergey", 34)
-            outInfo(sergey.toString())
-            val nikita = sergey.copy(name = "Nikita")
-            outInfo(nikita.toString())
+            personTest()
         }
 
         binding.cycleButton.setOnClickListener(this)
@@ -42,6 +39,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.click_me_button -> pressButton()
             R.id.cycle_button -> cycleTest()
         }
+    }
+
+    private fun personTest() {
+        val sergey = Person("Sergey", 34)
+        outInfo(sergey.toString())
+        val nikita = sergey.copy(name = "Nikita")
+        outInfo(nikita.toString())
     }
 
     private fun pressButton() {
