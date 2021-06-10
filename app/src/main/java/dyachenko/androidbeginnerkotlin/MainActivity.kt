@@ -27,11 +27,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.cycleButton.setOnClickListener(this)
     }
 
-    private fun outInfo(text: String, clear: Boolean = false) {
-        val sb = StringBuilder()
-        if (!clear) sb.append(binding.infoTextView.text.toString())
-        sb.append(text).append("\n")
-        binding.infoTextView.text = sb.toString()
+    private fun outInfo(text: String, clearPrevious: Boolean = false) {
+        val builder = StringBuilder()
+        if (!clearPrevious) {
+            builder.append(binding.infoTextView.text.toString())
+        }
+        builder.append(text).append("\n")
+        binding.infoTextView.text = builder.toString()
     }
 
     override fun onClick(v: View?) {
@@ -50,9 +52,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun pressButton() {
         Counters.countButtonPressed++
-        val clear = Counters.countButtonPressed == Constants.CONSOLE_CLEAR_LIMIT
-        if (clear) Counters.countButtonPressed = 0
-        outInfo("${Counters.countButtonPressed}: I was pressed softly", clear)
+        val clearPrevious = Counters.countButtonPressed == Constants.CONSOLE_CLEAR_LIMIT
+        if (clearPrevious) {
+            Counters.countButtonPressed = Constants.CONSOLE_COUNTER_START_VALUE
+        }
+        outInfo("${Counters.countButtonPressed}: I was pressed softly", clearPrevious)
     }
 
     private fun cycleTest() {
